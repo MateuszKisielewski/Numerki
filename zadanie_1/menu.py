@@ -39,7 +39,8 @@ def podaj_iteracje():
     print("Podaj liczbę iteracji:")
     iteracje = input()
 
-while True:
+wybor = ""
+while wybor != "0":
     menu()
     wybor = input("Podaj cyfrę: ")
 
@@ -47,21 +48,16 @@ while True:
         case "1":
             print("Wybrano wielomian")
             zakres()
-            break
         case "2":
             print("Wybrano trygonometryczną")
             zakres()
-            break
         case "3":
             print("Wybrano wykładniczą")
             zakres()
-            break
         case "4":
             print("Wybrano Złożenia")
             zakres()
-            break
         case "0":
             print("Zamknięto program")
-            break
         case _:
             print("Podano niepoprawną cyfrę!\n")
