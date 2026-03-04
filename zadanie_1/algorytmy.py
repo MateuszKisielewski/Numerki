@@ -29,3 +29,5 @@ def bisekcja(f, a, b, kryterium, wartosc):
                 xi = (a + b) / 2
                 iteracje += 1
     return xi, iteracje
+
+def styczna()

@@ -1,4 +1,4 @@
-from zadanie_1.algorytmy import f_wielomian, bisekcja
+from algorytmy import f_wielomian, bisekcja
 
 
 def menu():
