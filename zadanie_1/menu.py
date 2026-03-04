@@ -1,4 +1,3 @@
-#menu
 def menu():
     print("Wybierz jedną z funkcji:")
     print("1. Wielomian")
@@ -9,17 +8,16 @@ def menu():
 
 def zakres():
     print("Podaj zakres")
-    print("A:")
-    A = input()
-    print("B:")
-    B = input()
+    a = int(input("A: "))
+    b = int(input("B: "))
     stop_kryt()
+    return a, b
 
 def stop_kryt():
     print("Wybierz kryterium zatrzymania:")
     print("a. spełnienie warunku nałożonego na dokładność")
     print("b. osiągnięcie żądanej liczby iteracji")
-    kryterium = input()
+    kryterium = input("Wybor: ")
 
     match kryterium:
         case "a":
@@ -32,12 +30,12 @@ def stop_kryt():
             print("Wybrano nieprawidłową literę!")
 
 def podaj_epsilon():
-    print("Podaj epsilon:")
-    epsilon = input()
+    epsilon = float(input("Podaj epsilon: "))
+    return epsilon
 
 def podaj_iteracje():
-    print("Podaj liczbę iteracji:")
-    iteracje = input()
+    iteracje = int(input("Podaj liczbę iteracji: "))
+    return iteracje
 
 wybor = ""
 while wybor != "0":
