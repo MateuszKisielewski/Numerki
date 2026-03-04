@@ -1,2 +1,2 @@
-def kryterium_B(f, x, epsilon):
-    return abs(f(x)) < epsilon
+def kryterium_B(f, xi, epsilon):
+    return abs(f(xi)) < epsilon

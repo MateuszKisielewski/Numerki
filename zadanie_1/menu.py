@@ -1,3 +1,6 @@
+from zadanie_1.algorytmy import f_wielomian, bisekcja
+
+
 def menu():
     print("Wybierz jedną z funkcji:")
     print("1. Wielomian")
@@ -10,8 +13,8 @@ def zakres():
     print("Podaj zakres")
     a = int(input("A: "))
     b = int(input("B: "))
-    stop_kryt()
-    return a, b
+    kryterium, wartosc = stop_kryt()
+    return a, b, kryterium, wartosc
 
 def stop_kryt():
     print("Wybierz kryterium zatrzymania:")
@@ -22,12 +25,15 @@ def stop_kryt():
     match kryterium:
         case "a":
             print("Wybrano a")
-            podaj_epsilon()
+            epsilon = podaj_epsilon()
+            return 'a', epsilon
         case "b":
             print("Wybrano b")
-            podaj_iteracje()
+            iteracja = podaj_iteracje()
+            return 'b', iteracja
         case _:
             print("Wybrano nieprawidłową literę!")
+            stop_kryt()
 
 def podaj_epsilon():
     epsilon = float(input("Podaj epsilon: "))
@@ -45,7 +51,10 @@ while wybor != "0":
     match wybor:
         case "1":
             print("Wybrano wielomian")
-            zakres()
+            a, b, kryterium, wartosc = zakres()
+            wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
+            print("wynik: ", wynik)
+            print("iteracje: ", iteracje)
         case "2":
             print("Wybrano trygonometryczną")
             zakres()
