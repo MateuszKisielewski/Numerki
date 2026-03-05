@@ -1,7 +1,7 @@
 from horner import horner
 
 def f_wielomian(x):
-    return horner(x, [1, 0, -1, -2], 4)
+    return horner(x, [1, 2, -1, -2], 4)
 
 def bisekcja(f, a, b, kryterium, epsilon):
     if  f(a) * f(b) >= 0:

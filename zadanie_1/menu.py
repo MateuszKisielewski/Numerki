@@ -1,18 +1,25 @@
 from algorytmy import f_wielomian, bisekcja
 
-
 def menu():
     print("Wybierz jedną z funkcji:")
-    print("1. Wielomian")
-    print("2. Trygonometryczna")
-    print("3. Wykładnicza")
-    print("4. Złożenia")
+    print("1. Wielomian: f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
+    print("2. Trygonometryczna: f(x) = cos(x) - 0.5")
+    print("3. Wykładnicza: f(x) = e^x - 7")
+    print("4. Złożenia: f(x) = x^3 - cos(x) - e^x + 7")
     print("0. Wyjdź")
     f=input("Wybor: ")
 
     match f:
         case "1":
-            print("Wybrano wielomian")
+            print("Wybrano wielomian f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
+        case "2":
+            print("Wybrano trygonometryczną f(x) = cos(x) - 0.5")
+        case "3":
+            print("Wybrano wykładniczą f(x) = e^x - 7")
+        case "4":
+            print("Wybrano Złożenia f(x) = x^3 - cos(x) - e^x + 7")
+        case _:
+            print("Podano niepoprawną cyfrę!\n")
 
 def zakres():
     print("Podaj zakres")
@@ -37,7 +44,7 @@ def stop_kryt():
             iteracja = podaj_iteracje()
             return '2', iteracja
         case _:
-            print("Wybrano nieprawidłową literę!")
+            print("Wybrano nieprawidłowo!")
             stop_kryt()
 
 def podaj_epsilon():
@@ -49,27 +56,11 @@ def podaj_iteracje():
     return iteracje
 
 wybor = ""
-while wybor != "0":
-    menu()
-    wybor = input("Podaj cyfrę: ")
-
-    match wybor:
-        case "1":
-            print("Wybrano wielomian")
-            a, b, kryterium, wartosc = zakres()
-            wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
-            print("wynik: ", wynik)
-            print("iteracje: ", iteracje)
-        case "2":
-            print("Wybrano trygonometryczną")
-            zakres()
-        case "3":
-            print("Wybrano wykładniczą")
-            zakres()
-        case "4":
-            print("Wybrano Złożenia")
-            zakres()
-        case "0":
-            print("Zamknięto program")
-        case _:
-            print("Podano niepoprawną cyfrę!\n")
+while wybor != 'N':
+    wybor = input("Czy chcesz korzystać z programu?(T/N): ")
+    if wybor == 'T':
+        menu()
+        a, b, kryterium, wartosc = zakres()
+        wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
+        print("wynik: ", wynik)
+        print("iteracje: ", iteracje)
