@@ -18,19 +18,19 @@ def zakres():
 
 def stop_kryt():
     print("Wybierz kryterium zatrzymania:")
-    print("a. spełnienie warunku nałożonego na dokładność")
-    print("b. osiągnięcie żądanej liczby iteracji")
+    print("1. spełnienie warunku nałożonego na dokładność")
+    print("2. osiągnięcie żądanej liczby iteracji")
     kryterium = input("Wybor: ")
 
     match kryterium:
-        case "a":
-            print("Wybrano a")
+        case "1":
+            print("Wybrano 1")
             epsilon = podaj_epsilon()
-            return 'a', epsilon
-        case "b":
-            print("Wybrano b")
+            return '1', epsilon
+        case "2":
+            print("Wybrano 2")
             iteracja = podaj_iteracje()
-            return 'b', iteracja
+            return '2', iteracja
         case _:
             print("Wybrano nieprawidłową literę!")
             stop_kryt()

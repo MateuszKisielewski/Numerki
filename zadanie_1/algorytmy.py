@@ -1,18 +1,17 @@
 from horner import horner
-from kryterium_B import kryterium_B
 
 def f_wielomian(x):
     return horner(x, [1, 0, -1, -2], 4)
 
-def bisekcja(f, a, b, kryterium, wartosc):
+def bisekcja(f, a, b, kryterium, epsilon):
     if  f(a) * f(b) >= 0:
         return "iloczyn funkcji większy bądź równy 0"
     else:
         xi = (a + b) / 2
         iteracje = 0
 
-        if kryterium == "a":
-            while not kryterium_B(f, xi, wartosc):
+        if kryterium == "1":
+            while not (abs(f(xi)) < epsilon):
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
@@ -21,7 +20,7 @@ def bisekcja(f, a, b, kryterium, wartosc):
                 iteracje += 1
 
         else:
-            while iteracje < wartosc:
+            while iteracje < epsilon:
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
@@ -30,4 +29,4 @@ def bisekcja(f, a, b, kryterium, wartosc):
                 iteracje += 1
     return xi, iteracje
 
-def styczna()
+def styczna(f, df, a, b, kryterium, epsilon):
