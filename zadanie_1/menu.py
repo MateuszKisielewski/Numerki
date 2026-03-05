@@ -1,4 +1,4 @@
-from algorytmy import f_wielomian, bisekcja
+from algorytmy import f_wielomian, bisekcja, styczna, df_wielomian
 
 def menu():
     print("Wybierz jedną z funkcji:")
@@ -6,7 +6,6 @@ def menu():
     print("2. Trygonometryczna: f(x) = cos(x) - 0.5")
     print("3. Wykładnicza: f(x) = e^x - 7")
     print("4. Złożenia: f(x) = x^3 - cos(x) - e^x + 7")
-    print("0. Wyjdź")
     f=input("Wybor: ")
 
     match f:
@@ -20,6 +19,7 @@ def menu():
             print("Wybrano Złożenia f(x) = x^3 - cos(x) - e^x + 7")
         case _:
             print("Podano niepoprawną cyfrę!\n")
+            menu()
 
 def zakres():
     print("Podaj zakres")
@@ -55,12 +55,34 @@ def podaj_iteracje():
     iteracje = int(input("Podaj liczbę iteracji: "))
     return iteracje
 
-wybor = ""
+def wariant():
+    print("Wybierz wariant:")
+    print("1. Bisekcja")
+    print("2. Metoda stycznych")
+    wybrany_wariant = input("Wybor: ")
+    match wybrany_wariant:
+        case "1":
+            print("Wybrano bisekcję")
+            return "bisekcja"
+        case "2":
+            print("Wybrano metodę stycznych")       
+            return "styczna"
+        case _: 
+            print("Wybrano nieprawidłowo!")
+            wariant()
+
+wybor = "T"
 while wybor != 'N':
-    wybor = input("Czy chcesz korzystać z programu?(T/N): ")
-    if wybor == 'T':
-        menu()
-        a, b, kryterium, wartosc = zakres()
-        wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
-        print("wynik: ", wynik)
-        print("iteracje: ", iteracje)
+        if wybor == 'T':
+            menu()
+            a, b, kryterium, wartosc = zakres()
+            wariant_do_obliczen = wariant()
+            if wariant == "bisekcja":
+                wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
+            else:
+                wynik, iteracje = styczna(f_wielomian, df_wielomian, a, b, kryterium, wartosc)
+            print("wynik: ", wynik)
+            print("iteracje: ", iteracje)
+            wybor = input("Czy chcesz korzystać z programu?(T/N): ")
+
+# Trzeba zrobić funkcje dla pozostałych 3 funkcji, a następnie dodać je do menu i algorytmów, estetyka kodu, oraz dodać obsługę błędów: zły zakres, zły wybór wariantu, zły wybór kryterium
