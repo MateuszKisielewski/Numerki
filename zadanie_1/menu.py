@@ -8,6 +8,11 @@ def menu():
     print("3. Wykładnicza")
     print("4. Złożenia")
     print("0. Wyjdź")
+    f=input("Wybor: ")
+
+    match f:
+        case "1":
+            print("Wybrano wielomian")
 
 def zakres():
     print("Podaj zakres")
