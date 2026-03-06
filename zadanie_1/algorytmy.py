@@ -6,7 +6,6 @@ def f_wielomian(x):
 def df_wielomian(x):
     return horner(x, [3, 4, -1], 3)
 
-
 def bisekcja(f, a, b, kryterium, epsilon):
     if  f(a) * f(b) >= 0:
         return "iloczyn funkcji większy bądź równy 0 - brak spełnienia warunków zadania", "Błąd!"
