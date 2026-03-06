@@ -1,4 +1,4 @@
-from algorytmy import f_wielomian, bisekcja, styczna, df_wielomian
+from algorytmy import f_wielomian, bisekcja, styczna, df_wielomian, f_trygonometryczna, df_trygonometryczna, f_wykladnicza, df_wykladnicza, f_zlozenia, df_zlozenia
 
 def menu():
     print("Wybierz jedną z funkcji:")
@@ -88,7 +88,7 @@ def wariant():
             wariant()
 
 wybor = "T"
-while wybor != 'N' or wybor != 'n':
+while wybor != 'N' and wybor != 'n':
         if wybor == "T" or wybor == "t":
             funkcja, pochodna = menu() 
             a, b, kryterium, wartosc = zakres()
