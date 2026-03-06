@@ -11,12 +11,16 @@ def menu():
     match f:
         case "1":
             print("Wybrano wielomian f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
+            return f_wielomian, df_wielomian
         case "2":
             print("Wybrano trygonometryczną f(x) = cos(x) - 0.5")
+            return f_trygonometryczna, df_trygonometryczna
         case "3":
             print("Wybrano wykładniczą f(x) = e^x - 7")
+            return f_wykladnicza, df_wykladnicza
         case "4":
             print("Wybrano Złożenia f(x) = x^3 - cos(x) - e^x + 7")
+            return f_zlozenia, df_zlozenia
         case _:
             print("Podano niepoprawną cyfrę!\n")
             menu()
@@ -86,13 +90,13 @@ def wariant():
 wybor = "T"
 while wybor != 'N' or wybor != 'n':
         if wybor == "T" or wybor == "t":
-            menu()
+            funkcja, pochodna = menu() 
             a, b, kryterium, wartosc = zakres()
             wariant_do_obliczen = wariant()
             if wariant_do_obliczen == "bisekcja":
-                wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
+                wynik, iteracje = bisekcja(funkcja, a, b, kryterium, wartosc)
             else:
-                wynik, iteracje = styczna(f_wielomian, df_wielomian, a, b, kryterium, wartosc)
+                wynik, iteracje = styczna(funkcja, pochodna, a, b, kryterium, wartosc)
             print("wynik: ", wynik)
             print("iteracje: ", iteracje)
             wybor = input("Czy chcesz korzystać z programu?(T/N): ")
