@@ -52,12 +52,20 @@ def stop_kryt():
             stop_kryt()
 
 def podaj_epsilon():
-    epsilon = float(input("Podaj epsilon: "))
-    return epsilon
+    try:
+        epsilon = float(input("Podaj epsilon: "))
+        return epsilon
+    except ValueError:
+        print("Nie wpisano poprawnej wartości (float)")
+        podaj_epsilon()
 
 def podaj_iteracje():
-    iteracje = int(input("Podaj liczbę iteracji: "))
-    return iteracje
+    try:
+        iteracje = int(input("Podaj liczbę iteracji: "))
+        return iteracje
+    except ValueError:
+        print("Nie wpisano poprawnej wartości (int)")
+        podaj_iteracje()
 
 def wariant():
     print("Wybierz wariant:")
