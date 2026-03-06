@@ -2,97 +2,97 @@ from algorytmy import f_wielomian, bisekcja, styczna, df_wielomian, f_trygonomet
 from wykresy import wykres
 
 def menu():
-    print("Wybierz jedną z funkcji:")
-    print("1. Wielomian: f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
-    print("2. Trygonometryczna: f(x) = cos(x) - 0.5")
-    print("3. Wykładnicza: f(x) = e^x - 7")
-    print("4. Złożenia: f(x) = x^3 - cos(x) - e^x + 7")
-    f=input("Wybor: ")
+    while True:
+        print("Wybierz jedną z funkcji:")
+        print("1. Wielomian: f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
+        print("2. Trygonometryczna: f(x) = cos(x) - 0.5")
+        print("3. Wykładnicza: f(x) = e^x - 7")
+        print("4. Złożenia: f(x) = x^3 - cos(x) - e^x + 7")
+        f=input("Wybor: ")
 
-    match f:
-        case "1":
-            print("Wybrano wielomian f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
-            return f_wielomian, df_wielomian
-        case "2":
-            print("Wybrano trygonometryczną f(x) = cos(x) - 0.5")
-            return f_trygonometryczna, df_trygonometryczna
-        case "3":
-            print("Wybrano wykładniczą f(x) = e^x - 7")
-            return f_wykladnicza, df_wykladnicza
-        case "4":
-            print("Wybrano Złożenia f(x) = x^3 - cos(x) - e^x + 7")
-            return f_zlozenia, df_zlozenia
-        case _:
-            print("Podano niepoprawną cyfrę!\n")
-            menu()
+        match f:
+            case "1":
+                print("Wybrano wielomian f(x) = 1*x^3 + 2*x^2 - 1*x - 2")
+                return f_wielomian, df_wielomian
+            case "2":
+                print("Wybrano trygonometryczną f(x) = cos(x) - 0.5")
+                return f_trygonometryczna, df_trygonometryczna
+            case "3":
+                print("Wybrano wykładniczą f(x) = e^x - 7")
+                return f_wykladnicza, df_wykladnicza
+            case "4":
+                print("Wybrano Złożenia f(x) = x^3 - cos(x) - e^x + 7")
+                return f_zlozenia, df_zlozenia
+            case _:
+                print("Podano niepoprawną cyfrę!\n")
 
 def zakres():
-    print("Podaj zakres")
-    try:
-        a = float(input("A: "))
-        b = float(input("B: "))
-        kryterium, wartosc = stop_kryt()
-        return float(a), float(b), kryterium, wartosc
-    except ValueError:
-        print("Nie wpisano poprawnych danych")
-        zakres()
+    while True:
+        print("Podaj zakres")
+        try:
+            a = float(input("A: "))
+            b = float(input("B: "))
+            return float(a), float(b)
+        except ValueError:
+            print("Nie wpisano poprawnych danych")
 
 def stop_kryt():
-    print("Wybierz kryterium zatrzymania:")
-    print("1. spełnienie warunku nałożonego na dokładność")
-    print("2. osiągnięcie żądanej liczby iteracji")
-    kryterium = input("Wybor: ")
+    while True:
+        print("Wybierz kryterium zatrzymania:")
+        print("1. spełnienie warunku nałożonego na dokładność")
+        print("2. osiągnięcie żądanej liczby iteracji")
+        kryterium = input("Wybor: ")
 
-    match kryterium:
-        case "1":
-            print("Wybrano 1")
-            epsilon = podaj_epsilon()
-            return '1', epsilon
-        case "2":
-            print("Wybrano 2")
-            iteracja = podaj_iteracje()
-            return '2', iteracja
-        case _:
-            print("Wybrano nieprawidłowo!")
-            stop_kryt()
+        match kryterium:
+            case "1":
+                print("Wybrano 1")
+                epsilon = podaj_epsilon()
+                return '1', epsilon
+            case "2":
+                print("Wybrano 2")
+                iteracja = podaj_iteracje()
+                return '2', iteracja
+            case _:
+                print("Wybrano nieprawidłowo!")
 
 def podaj_epsilon():
-    try:
-        epsilon = float(input("Podaj epsilon: "))
-        return epsilon
-    except ValueError:
-        print("Nie wpisano poprawnej wartości (float)")
-        podaj_epsilon()
+    while True:
+        try:
+            epsilon = float(input("Podaj epsilon: "))
+            return epsilon
+        except ValueError:
+            print("Nie wpisano poprawnej wartości (float)")
 
 def podaj_iteracje():
-    try:
-        iteracje = int(input("Podaj liczbę iteracji: "))
-        return iteracje
-    except ValueError:
-        print("Nie wpisano poprawnej wartości (int)")
-        podaj_iteracje()
+    while True:
+        try:
+            iteracje = int(input("Podaj liczbę iteracji: "))
+            return iteracje
+        except ValueError:
+            print("Nie wpisano poprawnej wartości (int)")
 
 def wariant():
-    print("Wybierz wariant:")
-    print("1. Bisekcja")
-    print("2. Metoda stycznych")
-    wybrany_wariant = input("Wybor: ")
-    match wybrany_wariant:
-        case "1":
-            print("Wybrano bisekcję")
-            return "bisekcja"
-        case "2":
-            print("Wybrano metodę stycznych")       
-            return "styczna"
-        case _: 
-            print("Wybrano nieprawidłowo!")
-            wariant()
+    while True:
+        print("Wybierz wariant:")
+        print("1. Bisekcja")
+        print("2. Metoda stycznych")
+        wybrany_wariant = input("Wybor: ")
+        match wybrany_wariant:
+            case "1":
+                print("Wybrano bisekcję")
+                return "bisekcja"
+            case "2":
+                print("Wybrano metodę stycznych")
+                return "styczna"
+            case _:
+                print("Wybrano nieprawidłowo!")
 
 wybor = "T"
 while wybor != 'N' and wybor != 'n':
         if wybor == "T" or wybor == "t":
             funkcja, pochodna = menu() 
-            a, b, kryterium, wartosc = zakres()
+            a, b = zakres()
+            kryterium, wartosc = stop_kryt()
             wariant_do_obliczen = wariant()
             if wariant_do_obliczen == "bisekcja":
                 wynik, iteracje = bisekcja(funkcja, a, b, kryterium, wartosc)
@@ -100,8 +100,9 @@ while wybor != 'N' and wybor != 'n':
                 wynik, iteracje = styczna(funkcja, pochodna, a, b, kryterium, wartosc)
             print("wynik: ", wynik)
             print("iteracje: ", iteracje)
+
             if iteracje != "Błąd!":
-                wykres(funkcja, a, b)
+                wykres(funkcja, a, b, wynik)
             wybor = input("Czy chcesz korzystać z programu?(T/N): ")
         else:
             print("Wpisano złą literę, wybierz T albo N !")
