@@ -1,4 +1,5 @@
 from algorytmy import f_wielomian, bisekcja, styczna, df_wielomian, f_trygonometryczna, df_trygonometryczna, f_wykladnicza, df_wykladnicza, f_zlozenia, df_zlozenia
+from wykresy import wykres
 
 def menu():
     print("Wybierz jedną z funkcji:")
@@ -99,6 +100,8 @@ while wybor != 'N' and wybor != 'n':
                 wynik, iteracje = styczna(funkcja, pochodna, a, b, kryterium, wartosc)
             print("wynik: ", wynik)
             print("iteracje: ", iteracje)
+            if iteracje != "Błąd!":
+                wykres(funkcja, a, b)
             wybor = input("Czy chcesz korzystać z programu?(T/N): ")
         else:
             print("Wpisano złą literę, wybierz T albo N !")
