@@ -72,17 +72,21 @@ def wariant():
             wariant()
 
 wybor = "T"
-while wybor != 'N':
-        if wybor == 'T':
+while wybor != 'N' or wybor != 'n':
+        if wybor == "T" or wybor == "t":
             menu()
             a, b, kryterium, wartosc = zakres()
             wariant_do_obliczen = wariant()
-            if wariant == "bisekcja":
+            if wariant_do_obliczen == "bisekcja":
                 wynik, iteracje = bisekcja(f_wielomian, a, b, kryterium, wartosc)
             else:
                 wynik, iteracje = styczna(f_wielomian, df_wielomian, a, b, kryterium, wartosc)
             print("wynik: ", wynik)
             print("iteracje: ", iteracje)
             wybor = input("Czy chcesz korzystać z programu?(T/N): ")
+        else:
+            print("Wpisano złą literę, wybierz T albo N !")
+            wybor = input("Czy chcesz korzystać z programu?(T/N): ")
+
 
 # Trzeba zrobić funkcje dla pozostałych 3 funkcji, a następnie dodać je do menu i algorytmów, estetyka kodu, oraz dodać obsługę błędów: zły zakres, zły wybór wariantu, zły wybór kryterium

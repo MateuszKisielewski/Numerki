@@ -9,7 +9,7 @@ def df_wielomian(x):
 
 def bisekcja(f, a, b, kryterium, epsilon):
     if  f(a) * f(b) >= 0:
-        return "iloczyn funkcji większy bądź równy 0 - brak spełnienia warunków zadania"
+        return "iloczyn funkcji większy bądź równy 0 - brak spełnienia warunków zadania", "Błąd!"
     else:
         xi = (a + b) / 2
         iteracje = 0
