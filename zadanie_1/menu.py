@@ -23,10 +23,14 @@ def menu():
 
 def zakres():
     print("Podaj zakres")
-    a = int(input("A: "))
-    b = int(input("B: "))
-    kryterium, wartosc = stop_kryt()
-    return a, b, kryterium, wartosc
+    try:
+        a = float(input("A: "))
+        b = float(input("B: "))
+        kryterium, wartosc = stop_kryt()
+        return float(a), float(b), kryterium, wartosc
+    except ValueError:
+        print("Nie wpisano poprawnych danych")
+        zakres()
 
 def stop_kryt():
     print("Wybierz kryterium zatrzymania:")
