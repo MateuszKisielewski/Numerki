@@ -36,7 +36,7 @@ def bisekcja(f, a, b, kryterium, epsilon):
         iteracje = 0
 
         if kryterium == "1":
-            while not (abs(f(xi)) < epsilon):
+            while not (abs(f(xi)) < epsilon) and f(xi) != 0:
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
@@ -45,7 +45,7 @@ def bisekcja(f, a, b, kryterium, epsilon):
                 iteracje += 1
 
         else:
-            while iteracje < epsilon:
+            while iteracje < epsilon and f(xi) != 0:
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
