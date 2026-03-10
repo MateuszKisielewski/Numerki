@@ -33,13 +33,15 @@ def zakres():
         try:
             a = float(input("A: "))
             b = float(input("B: "))
-            if (a < 1000 or a > -1000) or (b < 1000 or b > -1000):
-                print("Podano niepoprawny zakres! Podaj liczby z zakresu [-1000, 1000]")
-                ValueError
+            if a < -1000 or a > 1000 or b < -1000 or b > 1000:
+                print("Podano niepoprawny zakres! Podaj liczby z zakresu [-1000, 1000]\n")
+            elif a >= b:
+                print("Błąd: Wartość A musi być mniejsza od B!\n")
             else:
                 return float(a), float(b)
+                
         except ValueError:
-            print("Nie wpisano poprawnych danych")
+            print("Nie wpisano poprawnych danych (wymagana liczba)\n")
 
 def stop_kryt():
     while True:
