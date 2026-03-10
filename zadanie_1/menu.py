@@ -29,10 +29,15 @@ def menu():
 def zakres():
     while True:
         print("Podaj zakres")
+        print("Możliwy zakres programu to: [-100, 100]")
         try:
             a = float(input("A: "))
             b = float(input("B: "))
-            return float(a), float(b)
+            if (a < 100 and a > -100) or (b < 100 and b > -100):
+                print("Podano niepoprawny zakres! Podaj liczby z zakresu [-100, 100]")
+                ValueError
+            else:
+                return float(a), float(b)
         except ValueError:
             print("Nie wpisano poprawnych danych")
 
@@ -107,6 +112,3 @@ while wybor != 'N' and wybor != 'n':
         else:
             print("Wpisano złą literę, wybierz T albo N !")
             wybor = input("Czy chcesz korzystać z programu?(T/N): ")
-
-
-# Trzeba zrobić funkcje dla pozostałych 3 funkcji, a następnie dodać je do menu i algorytmów, estetyka kodu, oraz dodać obsługę błędów: zły zakres, zły wybór wariantu, zły wybór kryterium
