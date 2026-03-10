@@ -29,12 +29,12 @@ def menu():
 def zakres():
     while True:
         print("Podaj zakres")
-        print("Możliwy zakres programu to: [-100, 100]")
+        print("Możliwy zakres programu to: [-1000, 1000]")
         try:
             a = float(input("A: "))
             b = float(input("B: "))
-            if (a < 100 and a > -100) or (b < 100 and b > -100):
-                print("Podano niepoprawny zakres! Podaj liczby z zakresu [-100, 100]")
+            if (a < 1000 or a > -1000) or (b < 1000 or b > -1000):
+                print("Podano niepoprawny zakres! Podaj liczby z zakresu [-1000, 1000]")
                 ValueError
             else:
                 return float(a), float(b)
