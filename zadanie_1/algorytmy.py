@@ -28,7 +28,7 @@ def df_zlozenia(x):
     horner_df_zlozenia = horner(x, [3, 0, 0], 3)
     return (horner_df_zlozenia + sin(x) - exp(x))
 
-def bisekcja(f, a, b, kryterium, epsilon):
+def bisekcja(f, a, b, kryterium, wartosc_kryterium):
     if  f(a) * f(b) >= 0:
         return "iloczyn funkcji większy bądź równy 0 - brak spełnienia warunków zadania", "Błąd!"
     else:
@@ -36,7 +36,7 @@ def bisekcja(f, a, b, kryterium, epsilon):
         iteracje = 0
 
         if kryterium == "1":
-            while not (abs(f(xi)) < epsilon) and f(xi) != 0:
+            while not (abs(f(xi)) < wartosc_kryterium) and f(xi) != 0:
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
@@ -45,7 +45,7 @@ def bisekcja(f, a, b, kryterium, epsilon):
                 iteracje += 1
 
         else:
-            while iteracje < epsilon and f(xi) != 0:
+            while iteracje < wartosc_kryterium and f(xi) != 0:
                 if f(a) * f(xi) < 0:
                     b = xi
                 else:
@@ -54,7 +54,7 @@ def bisekcja(f, a, b, kryterium, epsilon):
                 iteracje += 1
     return xi, iteracje
 
-def styczna(f, df, a, b, kryterium, epsilon):
+def styczna(f, df, a, b, kryterium, wartosc_kryterium):
     if f(a) * f(b) >= 0:
         return "iloczyn funkcji większy bądź równy 0 - brak spełnienia warunków zadania", "Błąd!"
     else:
@@ -62,12 +62,12 @@ def styczna(f, df, a, b, kryterium, epsilon):
         iteracje = 0
 
         if kryterium == "1":
-            while not (abs(f(xi)) < epsilon):
+            while not (abs(f(xi)) < wartosc_kryterium):
                 xi = xi - (f(xi) / df(xi))
                 iteracje += 1
 
         else:
-            while iteracje < epsilon:
+            while iteracje < wartosc_kryterium:
                 xi = xi - f(xi) / df(xi)
                 iteracje += 1
     return xi, iteracje
