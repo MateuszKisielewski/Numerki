@@ -30,5 +30,4 @@ def uruchom():
     except ValueError:
         print("Nieprawidłowa wartość")
 
-if __name__ == "__main__":
-    uruchom()
+uruchom()
