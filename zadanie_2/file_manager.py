@@ -10,7 +10,12 @@ def wczytaj_uklad_z_pliku(nazwa_pliku, liczba_rownan):
                 return None, None
                 
             for i in range(liczba_rownan):
-                wspolczynniki = [float(x) for x in linie[i].strip().split()]
+                wspolczynniki = []
+                kawalki_tekstu = linie[i].strip().split()
+                for x in kawalki_tekstu:
+                     liczba = float(x)
+                     wspolczynniki.append(liczba)
+                     
                 if len(wspolczynniki) != liczba_rownan + 1:
                     print(f"Błąd w wierszu {i+1}: zła liczba współczynników.")
                     return None, None
