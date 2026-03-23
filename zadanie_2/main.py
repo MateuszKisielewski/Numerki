@@ -2,7 +2,7 @@ from file_manager import wczytaj_uklad_z_pliku
 from solver import rozwiaz_uklad_gaussa
 
 def uruchom():
-    print("ROZWIĄZYWANIE UKŁADU RÓWNAŃ METODĄ ELIMINACJI GAUSSA")
+    print("Rozwiązywanie układu równań metodą eliminacji Gaussa")
     try:
         liczba_rownan = int(input("Podaj liczbę równań (N): "))
         if liczba_rownan <= 0:
