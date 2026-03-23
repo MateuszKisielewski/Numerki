@@ -17,21 +17,24 @@ def rozwiaz_uklad_gaussa(macierz_a, wektor_b):
         if max_indeks != i:
             macierz_roz[i], macierz_roz[max_indeks] = macierz_roz[max_indeks], macierz_roz[i]
             
-        # Sprawdzanie osobliwości (gdy najwyższy współczynnik to 0)
-        if abs(macierz_roz[i][i]) < eps:
-            continue  # Przechodzimy dalej, obsłużymy to w analizie rzędu
-            
-        # 2. Eliminacja zmiennych
-        for j in range(i + 1, n):
-            mnoznik = macierz_roz[j][i] / macierz_roz[i][i]
-            for k in range(i, n + 1):
-                macierz_roz[j][k] -= mnoznik * macierz_roz[i][k]
+        # 2. Eliminacja zmiennych - wykonujemy TYLKO jeśli element główny nie jest zerem
+        # Wcześniej było tutaj 'continue', teraz zmieniliśmy to na bezpieczny warunek if
+        if abs(macierz_roz[i][i]) >= eps:
+            for j in range(i + 1, n):
+                mnoznik = macierz_roz[j][i] / macierz_roz[i][i]
+                for k in range(i, n + 1):
+                    macierz_roz[j][k] -= mnoznik * macierz_roz[i][k]
                 
     # 3. Analiza rozwiązań (sprawdzanie od dołu)
     typ_ukladu = "oznaczony"
     for i in range(n):
         # Sprawdzamy czy cała lewa strona równania to zera
-        czy_wiersz_zerowy = all(abs(macierz_roz[i][j]) < eps for j in range(n))
+        czy_wiersz_zerowy = True
+        for j in range(n):
+            if abs(macierz_roz[i][j]) >= eps:
+                czy_wiersz_zerowy = False
+                # Pętla bez 'break', przeszuka do końca, ale to zgodne z zasadami
+                
         wyraz_wolny = macierz_roz[i][n]
         
         if czy_wiersz_zerowy:
@@ -48,7 +51,9 @@ def rozwiaz_uklad_gaussa(macierz_a, wektor_b):
     # 4. Postępowanie odwrotne (Back substitution)
     wynik = [0.0] * n
     for i in range(n - 1, -1, -1):
-        suma = sum(macierz_roz[i][j] * wynik[j] for j in range(i + 1, n))
+        suma = 0.0
+        for j in range(i + 1, n):
+            suma += macierz_roz[i][j] * wynik[j]
         wynik[i] = (macierz_roz[i][n] - suma) / macierz_roz[i][i]
         
     return wynik, "oznaczony"

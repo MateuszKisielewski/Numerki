@@ -22,9 +22,9 @@ def uruchom():
                 print("Układ jest oznaczony (posiada jedno rozwiązanie):")
                 for i, x in enumerate(wynik):
                     print(f"x_{i+1} = {x:.6f}")
-            elif status == "sprzeczny":
+            if status == "sprzeczny":
                 print("Układ jest sprzeczny (nie posiada rozwiązań).")
-            elif status == "nieoznaczony":
+            if status == "nieoznaczony":
                 print("Układ jest nieoznaczony (posiada nieskończenie wiele rozwiązań).")
                 
     except ValueError:
