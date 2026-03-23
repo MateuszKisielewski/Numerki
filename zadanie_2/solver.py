@@ -2,7 +2,7 @@ def rozwiaz_uklad_gaussa(macierz_a, wektor_b):
     n = len(macierz_a)
 
     macierz_roz = [wiersz[:] + [b_i] for wiersz, b_i in zip(macierz_a, wektor_b)]
-    eps = 1e-10
+    eps = 0.000001
 
     for i in range(n):
         max_indeks = i
