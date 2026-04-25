@@ -5,7 +5,6 @@ import interpolation
 
 
 def generuj_wykres(id_funkcji, a, b, n):
-    # 1. Wyznaczenie węzłów Czebyszewa i wartości funkcji w węzłach
     wezly_x = interpolation.generuj_wezly_czebyszewa(a, b, n)
     wezly_y = []
 
@@ -15,7 +14,6 @@ def generuj_wykres(id_funkcji, a, b, n):
         wezly_y.append(y)
         i += 1
 
-    # 2. Przygotowanie gęstej siatki punktów do narysowania gładkich wykresów
     liczba_punktow_wykresu = 500
     krok = (b - a) / (liczba_punktow_wykresu - 1)
 
@@ -28,16 +26,13 @@ def generuj_wykres(id_funkcji, a, b, n):
         x_curr = a + j * krok
         X_plot.append(x_curr)
 
-        # Wartość z oryginalnej funkcji
         Y_oryginalna.append(functions.ewaluuj_funkcje(id_funkcji, x_curr))
 
-        # Wartość z wielomianu interpolacyjnego Lagrange'a
         y_interp = interpolation.lagrange_oblicz_wartosc(x_curr, wezly_x, wezly_y, n)
         Y_interpolacja.append(y_interp)
 
         j += 1
 
-    # 3. Rysowanie wykresów z wykorzystaniem przekazanych tablic
     plt.figure(figsize=(10, 6))
     plt.plot(X_plot, Y_oryginalna, label="Funkcja oryginalna", color='blue', linewidth=2)
     plt.plot(X_plot, Y_interpolacja, label="Wielomian interpolacyjny", color='red', linestyle='--')
