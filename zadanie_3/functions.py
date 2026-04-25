@@ -13,11 +13,9 @@ def funkcja_wielomian(x):
     return math_utils.horner(x, wsp, len(wsp))
 
 def funkcja_trygonometryczna(x):
-    # f(x) = sin(x)
     return math.sin(x)
 
 def funkcja_zlozenie(x):
-    # f(x) = sin(|x|)
     return math.sin(math_utils.wartosc_bezwzgledna(x))
 
 def ewaluuj_funkcje(id_funkcji, x):
