@@ -5,7 +5,6 @@ import interpolation
 
 
 def generuj_wykres(id_funkcji, a, b, n):
-    # 1. Wyznaczenie węzłów Czebyszewa i wartości funkcji w węzłach
     wezly_x = interpolation.generuj_wezly_czebyszewa(a, b, n)
     wezly_y = []
 
@@ -15,7 +14,6 @@ def generuj_wykres(id_funkcji, a, b, n):
         wezly_y.append(y)
         i += 1
 
-    # 2. Przygotowanie gęstej siatki punktów do narysowania gładkich wykresów
     liczba_punktow_wykresu = 500
     krok = (b - a) / (liczba_punktow_wykresu - 1)
 
@@ -28,16 +26,13 @@ def generuj_wykres(id_funkcji, a, b, n):
         x_curr = a + j * krok
         X_plot.append(x_curr)
 
-        # Wartość z oryginalnej funkcji
         Y_oryginalna.append(functions.ewaluuj_funkcje(id_funkcji, x_curr))
 
-        # Wartość z wielomianu interpolacyjnego Lagrange'a
         y_interp = interpolation.lagrange_oblicz_wartosc(x_curr, wezly_x, wezly_y, n)
         Y_interpolacja.append(y_interp)
 
         j += 1
 
-    # 3. Rysowanie wykresów z wykorzystaniem przekazanych tablic
     plt.figure(figsize=(10, 6))
     plt.plot(X_plot, Y_oryginalna, label="Funkcja oryginalna", color='blue', linewidth=2)
     plt.plot(X_plot, Y_interpolacja, label="Wielomian interpolacyjny", color='red', linestyle='--')
@@ -54,12 +49,12 @@ def generuj_wykres(id_funkcji, a, b, n):
 def uruchom_program():
     dziala = True
     while dziala:
-        print("\n--- MENU INTERPOLACJI ---")
-        print("1. Funkcja liniowa (2x - 3)")
-        print("2. Funkcja |x|")
-        print("3. Wielomian (2x^3 - 4x^2 + x - 5) - liczony Hornerem")
-        print("4. Funkcja trygonometryczna (sin(x))")
-        print("5. Złożenie funkcji (sin(|x|))")
+        print("\nMENU INTERPOLACJI")
+        print("1. Funkcja liniowa: (2x - 3)")
+        print("2. Funkcja z wartością bezwzględną: |x|")
+        print("3. Wielomian: (2x^3 - 4x^2 + x - 5)")
+        print("4. Funkcja trygonometryczna: (sin(x))")
+        print("5. Złożenie funkcji: (sin(|x|))")
         print("0. Wyjście z programu")
 
         wybor_str = input("Wybierz funkcję: ")
@@ -76,9 +71,9 @@ def uruchom_program():
                 if n > 0 and a < b:
                     generuj_wykres(id_funkcji, a, b, n)
                 else:
-                    print("Błędne dane przedziału lub liczby węzłów.")
+                    print("Błędne dane przedziału lub liczby węzłów")
             else:
-                print("Niepoprawny wybór funkcji.")
+                print("Niepoprawny wybór funkcji")
 
 
 if __name__ == "__main__":

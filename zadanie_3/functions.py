@@ -3,16 +3,12 @@ import math
 import math_utils
 
 def funkcja_liniowa(x):
-    # f(x) = 2x - 3
     return 2.0 * x - 3.0
 
 def funkcja_modul(x):
-    # f(x) = |x|
     return math_utils.wartosc_bezwzgledna(x)
 
 def funkcja_wielomian(x):
-    # f(x) = 2x^3 - 4x^2 + x - 5
-    # Współczynniki dla schematu Hornera (od najwyższej potęgi)
     wsp = [2.0, -4.0, 1.0, -5.0]
     return math_utils.horner(x, wsp, len(wsp))
 
