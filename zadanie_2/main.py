@@ -1,25 +1,33 @@
-def menu():
-    while True:
-        print("1. Wprowadź dane ręcznie")
-        print("2. Wczytaj dane z pliku")
-        print("3. Wyświetl aktualny układ")
-        print("4. Rozwiąż układ")
-        print("0. Wyjście")
+from file_manager import wczytaj_uklad_z_pliku
+from solver import rozwiaz_uklad_gaussa
 
-        wybor = input("Wybierz opcję: ")
+def uruchom():
+    print("Rozwiązywanie układu równań metodą eliminacji Gaussa")
+    try:
+        liczba_rownan = int(input("Podaj liczbę równań (N): "))
+        if liczba_rownan <= 0:
+            print("Liczba równań musi być większa od zera")
+            return
+            
+        nazwa_pliku = input("Podaj nazwę pliku z macierzą: ")
+        
+        macierz_a, wektor_b = wczytaj_uklad_z_pliku(nazwa_pliku, liczba_rownan)
+        
+        if macierz_a is not None and wektor_b is not None:
+            print("\nPoprawnie wczytany układ równań")
+            wynik, status = rozwiaz_uklad_gaussa(macierz_a, wektor_b)
+            
+            print("\nWYNIK:")
+            if status == "oznaczony":
+                print("Układ jest oznaczony (posiada rozwiązanie):")
+                for i, x in enumerate(wynik):
+                    print(f"x_{i+1} = {x:.6f}")
+            if status == "sprzeczny":
+                print("Układ jest sprzeczny (nie posiada rozwiązań)")
+            if status == "nieoznaczony":
+                print("Układ jest nieoznaczony (posiada nieskończenie wiele rozwiązań)")
+                
+    except ValueError:
+        print("Nieprawidłowa wartość")
 
-        match wybor:
-            case "1":
-                print("Wybrano: wprowadź dane ręcznie")
-            case "2":
-                print("Wybrano: wczytaj dane z pliku")
-            case "3":
-                print("Wybrano: wyświetl aktualny układ")
-            case "4":
-                print("Wybrano: rozwiąż układ")
-            case "0":
-                print("Koniec programu")
-            case _:
-                print("Nieprawidłowa opcja")
-
-menu()
+uruchom()
