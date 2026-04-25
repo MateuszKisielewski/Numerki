@@ -49,12 +49,12 @@ def generuj_wykres(id_funkcji, a, b, n):
 def uruchom_program():
     dziala = True
     while dziala:
-        print("\n--- MENU INTERPOLACJI ---")
-        print("1. Funkcja liniowa (2x - 3)")
-        print("2. Funkcja |x|")
-        print("3. Wielomian (2x^3 - 4x^2 + x - 5) - liczony Hornerem")
-        print("4. Funkcja trygonometryczna (sin(x))")
-        print("5. Złożenie funkcji (sin(|x|))")
+        print("\nMENU INTERPOLACJI")
+        print("1. Funkcja liniowa: (2x - 3)")
+        print("2. Funkcja z wartością bezwzględną: |x|")
+        print("3. Wielomian: (2x^3 - 4x^2 + x - 5)")
+        print("4. Funkcja trygonometryczna: (sin(x))")
+        print("5. Złożenie funkcji: (sin(|x|))")
         print("0. Wyjście z programu")
 
         wybor_str = input("Wybierz funkcję: ")
@@ -71,9 +71,9 @@ def uruchom_program():
                 if n > 0 and a < b:
                     generuj_wykres(id_funkcji, a, b, n)
                 else:
-                    print("Błędne dane przedziału lub liczby węzłów.")
+                    print("Błędne dane przedziału lub liczby węzłów")
             else:
-                print("Niepoprawny wybór funkcji.")
+                print("Niepoprawny wybór funkcji")
 
 
 if __name__ == "__main__":
