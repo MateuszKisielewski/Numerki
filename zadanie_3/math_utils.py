@@ -1,7 +1,8 @@
 # math_utils.py
 
 def horner(x, wspolczynniki, n):
- wynik = wspolczynniki[0]
+
+    wynik = wspolczynniki[0]
     i = 1
     while i < n:
         wynik = wynik * x + wspolczynniki[i]
