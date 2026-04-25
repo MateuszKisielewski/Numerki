@@ -1,4 +1,3 @@
-# functions.py
 import math
 import math_utils
 
@@ -19,7 +18,6 @@ def funkcja_zlozenie(x):
     return math.sin(math_utils.wartosc_bezwzgledna(x))
 
 def ewaluuj_funkcje(id_funkcji, x):
-    """Zwraca wartość wybranej funkcji dla danego x bez użycia instrukcji break/continue."""
     wynik = 0.0
     if id_funkcji == 1:
         wynik = funkcja_liniowa(x)

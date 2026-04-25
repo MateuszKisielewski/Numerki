@@ -1,5 +1,3 @@
-# math_utils.py
-
 def horner(x, wspolczynniki, n):
 
     wynik = wspolczynniki[0]

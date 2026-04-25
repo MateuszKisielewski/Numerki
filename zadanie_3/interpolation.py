@@ -1,4 +1,3 @@
-# interpolation.py
 import math
 
 def generuj_wezly_czebyszewa(a, b, n):
