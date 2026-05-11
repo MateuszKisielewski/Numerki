@@ -1,7 +1,15 @@
 def rozwiaz_uklad_gaussa(macierz_a, wektor_b):
     n = len(macierz_a)
 
-    macierz_roz = [wiersz[:] + [b_i] for wiersz, b_i in zip(macierz_a, wektor_b)]
+    macierz_roz = []
+    
+    for i in range(n):
+        nowy_wiersz = []
+        for j in range(n):
+            nowy_wiersz.append(macierz_a[i][j])
+        nowy_wiersz.append(wektor_b[i])
+        macierz_roz.append(nowy_wiersz)
+
     eps = 0.000001
 
     for i in range(n):
