@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math_utils
 from funkcje import ewaluuj_funkcje, wspolczynniki_dla_hornera, oblicz_blad
+import math
 
 def generuj_wykres(numer_funkcji, wspolczynniki_potegowe, poczatek_przedzialu, koniec_przedzialu, stopien_wielomianu, obliczony_blad):
     liczba_punktow_wykresu = 500
@@ -16,9 +17,22 @@ def generuj_wykres(numer_funkcji, wspolczynniki_potegowe, poczatek_przedzialu, k
         punkt_znormalizowany = (2.0 * punkt_x - poczatek_przedzialu - koniec_przedzialu) / (koniec_przedzialu - poczatek_przedzialu)
         wartosci_aproksymacji.append(math_utils.horner(punkt_znormalizowany, wspolczynniki_potegowe, len(wspolczynniki_potegowe)))
         
+    wezly_x = []
+    wezly_y = []
+    liczba_wezlow_na_wykresie = stopien_wielomianu + 1
+    
+    for i in range(liczba_wezlow_na_wykresie):
+        wezel_znormalizowany = math.cos(math.pi * (2.0 * i + 1.0) / (2.0 * liczba_wezlow_na_wykresie))
+        wezel_przeskalowany = 0.5 * (koniec_przedzialu - poczatek_przedzialu) * wezel_znormalizowany + 0.5 * (poczatek_przedzialu + koniec_przedzialu)
+        wezly_x.append(wezel_przeskalowany)
+        wezly_y.append(ewaluuj_funkcje(numer_funkcji, wezel_przeskalowany))
+
     plt.figure(figsize=(10, 6))
+    
     plt.plot(punkty_na_osi_x, wartosci_oryginalne, label="Funkcja oryginalna", color='blue', linewidth=2)
     plt.plot(punkty_na_osi_x, wartosci_aproksymacji, label=f"Aproksymacja (stopien {stopien_wielomianu})", color='red', linestyle='--')
+    
+    plt.plot(wezly_x, wezly_y, 'ko', label="Węzły Czebyszewa", markersize=6, zorder=5)
     
     plt.title(f"Aproksymacja Czebyszewa | RMSE: {round(obliczony_blad, 6)}")
     plt.xlabel("os X")
@@ -47,14 +61,14 @@ def uruchom_program():
             koniec_przedzialu = float(input("Podaj koniec przedzialu (b): "))
             
             if poczatek_przedzialu >= koniec_przedzialu:
-                print("Blad: wartosc poczatku musi byc mniejsza od konca przedzialu!")
+                print("Błąd: wartość początku musi być mniejsza od końca przedziału")
                 continue
                 
             liczba_wezlow_calkowania = int(input("Podaj liczbe wezlow calkowania Gaussa (np. 100): "))
             
             print("\nWybierz tryb pracy:")
             print("1. Standardowy (podaje z gory stopien wielomianu)")
-            print("2. Zaawansowany - ocena 5.0 (iteracyjny dobor stopnia do zadanego bledu)")
+            print("2. Zaawansowany (iteracyjny dobor stopnia do zadanego bledu)")
             wybrany_tryb = input("Wybor: ")
             
             if wybrany_tryb == '1':
