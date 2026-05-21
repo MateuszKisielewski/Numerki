@@ -1,2 +1,1 @@
 # Numerki
-Cwele i pedały
